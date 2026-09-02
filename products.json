@@ -1,0 +1,66 @@
+[
+  {
+    "id": "p01",
+    "name": "Jaqueta Runaway",
+    "category": "Outerwear",
+    "price": 429,
+    "tag": "Novo",
+    "mark": "01"
+  },
+  {
+    "id": "p02",
+    "name": "Moletom Comum²",
+    "category": "Hoodies",
+    "price": 289,
+    "tag": null,
+    "mark": "02"
+  },
+  {
+    "id": "p03",
+    "name": "Camiseta Freedom",
+    "category": "Tees",
+    "price": 149,
+    "tag": "Últimas peças",
+    "mark": "03"
+  },
+  {
+    "id": "p04",
+    "name": "Calça Wide Escape",
+    "category": "Bottoms",
+    "price": 349,
+    "tag": null,
+    "mark": "04"
+  },
+  {
+    "id": "p05",
+    "name": "Boné Club",
+    "category": "Acessórios",
+    "price": 119,
+    "tag": null,
+    "mark": "05"
+  },
+  {
+    "id": "p06",
+    "name": "Bomber Ordinary",
+    "category": "Outerwear",
+    "price": 459,
+    "tag": "Novo",
+    "mark": "06"
+  },
+  {
+    "id": "p07",
+    "name": "Camiseta Ordinary Fade",
+    "category": "Tees",
+    "price": 159,
+    "tag": null,
+    "mark": "07"
+  },
+  {
+    "id": "p08",
+    "name": "Moletom Zip Runaway",
+    "category": "Hoodies",
+    "price": 319,
+    "tag": null,
+    "mark": "08"
+  }
+]

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erolles Club — Nascido para escapar do comum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="overlay" id="overlay"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">EROLLES<span>CLUB</span></a>
+    <div class="tagline">Nascido para escapar do comum.</div>
+    <div class="header-right">
+      <button class="icon-btn" aria-label="Moeda">R$</button>
+      <button class="icon-btn" id="cart-btn" aria-label="Carrinho">🛍<span id="cart-count" style="margin-left:2px;font-size:11px;"></span></button>
+      <button class="menu-btn" id="menu-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobile-nav">
+  <div class="mobile-nav-top">
+    <a href="#" class="logo" style="color:inherit;">EROLLES<span>CLUB</span></a>
+    <button class="mobile-nav-close" id="menu-close" aria-label="Fechar menu">✕</button>
+  </div>
+  <ul>
+    <li><a href="#colecao">Coleção</a></li>
+    <li><a href="#manifesto">Sobre</a></li>
+    <li><a href="#newsletter">Clube</a></li>
+  </ul>
+  <div class="mobile-nav-footer">erollesclub@gmail.com</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid-label">Coleção 001 — Disponível agora</div>
+  <div class="hero-content">
+    <h1>ESCAPE<br>DO COMUM.</h1>
+    <div class="hero-sub">
+      <p>Roupas feitas para quem não segue o roteiro. Peças autorais, produção limitada, sem repetição.</p>
+      <a href="#colecao" class="btn">Ver coleção →</a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>FRETE GRÁTIS ACIMA DE R$ 399</span>
+    <span>PEÇAS EM EDIÇÃO LIMITADA</span>
+    <span>ROUPA PRÓPRIA, DESIGN AUTORAL</span>
+    <span>FRETE GRÁTIS ACIMA DE R$ 399</span>
+    <span>PEÇAS EM EDIÇÃO LIMITADA</span>
+    <span>ROUPA PRÓPRIA, DESIGN AUTORAL</span>
+  </div>
+</div>
+
+<section class="section" id="colecao">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>A coleção</h2>
+      <p>Cada peça é desenhada internamente pelo time Erolles — nada de estampa genérica, nada de lote grande.</p>
+    </div>
+    <div class="filter-bar" id="filter-bar"></div>
+    <div class="products" id="products-grid"></div>
+  </div>
+</section>
+
+<section class="manifesto" id="manifesto">
+  <div class="wrap">
+    <div>
+      <h2>Roupa própria. Sem atalho, sem repetição.</h2>
+      <p>A Erolles Club nasceu para quem cansou do óbvio. Produzimos nossas próprias peças, em lotes pequenos, pensadas para durar — no armário e na atitude.</p>
+      <div class="stat-row">
+        <div><b>100%</b><span>Coleção própria</span></div>
+        <div><b>Ltd.</b><span>Produção limitada</span></div>
+        <div><b>BR</b><span>Feito no Brasil</span></div>
+      </div>
+    </div>
+    <div>
+      <div style="aspect-ratio:4/5;background:linear-gradient(160deg,#233158,#0e1730);display:flex;align-items:center;justify-content:center;">
+        <span style="font-family:'Archivo Black',sans-serif;font-size:14vw;color:var(--cream);opacity:0.08;transform:rotate(-6deg);">EC</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter" id="newsletter">
+  <div class="wrap">
+    <h2>Entre pro clube.</h2>
+    <p>Cadastre seu e-mail e seja o primeiro a saber sobre novos drops e peças em edição limitada.</p>
+    <form class="news-form" id="news-form">
+      <input type="email" placeholder="seu@email.com" required>
+      <button type="submit">Inscrever</button>
+    </form>
+    <div class="news-msg" id="news-msg"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="#" class="footer-logo">EROLLES<br>CLUB</a>
+        <p style="font-size:14px;opacity:0.7;max-width:220px;line-height:1.5;">Roupas próprias para quem escapa do comum.</p>
+      </div>
+      <div class="footer-col">
+        <h4>LOJA</h4>
+        <ul>
+          <li><a href="#colecao">Nova coleção</a></li>
+          <li><a href="#colecao">Camisetas</a></li>
+          <li><a href="#colecao">Moletons</a></li>
+          <li><a href="#colecao">Acessórios</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>AJUDA</h4>
+        <ul>
+          <li><a href="#">Trocas e devoluções</a></li>
+          <li><a href="#">Guia de tamanhos</a></li>
+          <li><a href="#">Rastrear pedido</a></li>
+          <li><a href="#">Fale conosco</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>CONTATO</h4>
+        <ul>
+          <li><a href="mailto:erollesclub@gmail.com">erollesclub@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="socials">
+      <a href="#" aria-label="Facebook">f</a>
+      <a href="#" aria-label="Instagram">ig</a>
+      <a href="#" aria-label="YouTube">yt</a>
+      <a href="#" aria-label="X">x</a>
+      <a href="#" aria-label="TikTok">tt</a>
+    </div>
+    <div class="footer-legal">© 2026 Erolles Club. Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+<aside class="cart-drawer" id="cart-drawer">
+  <div class="cart-header">
+    <h3>Seu carrinho</h3>
+    <button class="cart-close" id="cart-close" aria-label="Fechar carrinho">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cart-total-value">R$ 0,00</span>
+    </div>
+    <button class="btn" style="width:100%;justify-content:center;">Finalizar compra</button>
+  </div>
+</aside>
+
+<script src="script.js"></script>
+</body>
+</html>
