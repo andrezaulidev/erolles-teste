@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrar — Erolles Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="overlay" id="overlay"></div>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">EROLLES<span>CLUB</span></a>
+    <div class="tagline">Nascido para escapar do comum.</div>
+    <div class="header-right">
+      <span class="user-chip"></span>
+      <a href="login.html" class="icon-btn" aria-label="Login">👤</a>
+      <button class="icon-btn" id="cart-btn" aria-label="Carrinho">🛍<span class="cart-count-badge" style="margin-left:2px;font-size:11px;"></span></button>
+      <button class="menu-btn" id="menu-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobile-nav">
+  <div class="mobile-nav-top">
+    <a href="index.html" class="logo" style="color:inherit;">EROLLES<span>CLUB</span></a>
+    <button class="mobile-nav-close" id="menu-close" aria-label="Fechar menu">✕</button>
+  </div>
+  <ul>
+    <li><a href="index.html#colecao">Coleção</a></li>
+    <li><a href="index.html#manifesto">Sobre</a></li>
+    <li><a href="carrinho.html">Carrinho</a></li>
+  </ul>
+  <div class="mobile-nav-footer">erollesclub@gmail.com</div>
+</nav>
+
+<div class="auth-wrap">
+  <div class="auth-box">
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login">Entrar</button>
+      <button class="auth-tab" data-tab="register">Criar conta</button>
+    </div>
+
+    <div id="login-panel">
+      <h1>Bem-vindo(a) de volta</h1>
+      <p class="auth-sub">Entre pra ver seus pedidos e favoritos.</p>
+      <form id="login-form">
+        <div class="field">
+          <label for="login-email">E-mail</label>
+          <input type="email" id="login-email" required placeholder="seu@email.com">
+        </div>
+        <div class="field">
+          <label for="login-password">Senha</label>
+          <input type="password" id="login-password" required placeholder="••••••">
+        </div>
+        <button type="submit" class="btn auth-submit">Entrar</button>
+        <div class="auth-msg" id="login-msg"></div>
+      </form>
+      <div class="auth-switch">Ainda não tem conta? <button type="button" onclick="document.querySelector('.auth-tab[data-tab=register]').click()">Criar conta</button></div>
+    </div>
+
+    <div id="register-panel" style="display:none;">
+      <h1>Criar conta</h1>
+      <p class="auth-sub">Entre pro clube e acompanhe seus pedidos.</p>
+      <form id="register-form">
+        <div class="field">
+          <label for="register-name">Nome</label>
+          <input type="text" id="register-name" required placeholder="Seu nome">
+        </div>
+        <div class="field">
+          <label for="register-email">E-mail</label>
+          <input type="email" id="register-email" required placeholder="seu@email.com">
+        </div>
+        <div class="field">
+          <label for="register-password">Senha</label>
+          <input type="password" id="register-password" required placeholder="Mínimo 4 caracteres">
+        </div>
+        <button type="submit" class="btn auth-submit">Criar conta</button>
+        <div class="auth-msg" id="register-msg"></div>
+      </form>
+      <div class="auth-switch">Já tem conta? <button type="button" onclick="document.querySelector('.auth-tab[data-tab=login]').click()">Entrar</button></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-bottom" style="border-top:none;">
+      <div class="footer-legal">© 2026 Erolles Club. Todos os direitos reservados.</div>
+    </div>
+  </div>
+</footer>
+
+<aside class="cart-drawer" id="cart-drawer">
+  <div class="cart-header">
+    <h3>Seu carrinho</h3>
+    <button class="cart-close" id="cart-close" aria-label="Fechar carrinho">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <a href="carrinho.html" class="view-cart-link">Ver carrinho completo</a>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cart-total-value">R$ 0,00</span>
+    </div>
+    <a href="carrinho.html" class="btn" style="width:100%;justify-content:center;display:flex;">Finalizar compra</a>
+  </div>
+</aside>
+
+<script src="script.js"></script>
+</body>
+</html>

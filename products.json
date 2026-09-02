@@ -1,66 +1,74 @@
 [
   {
     "id": "p01",
-    "name": "Jaqueta Runaway",
-    "category": "Outerwear",
-    "price": 429,
+    "name": "Camiseta Riviera Branca",
+    "category": "Estampadas",
+    "price": 189,
     "tag": "Novo",
-    "mark": "01"
+    "images": ["assets/villa-white-back.jpg", "assets/logo-white-front.jpg"],
+    "description": "Camiseta branca 100% algodão com estampa \"On the Beach, In the City\" nas costas e logo bordado discreto na frente. Peça-chave da coleção Riviera."
   },
   {
     "id": "p02",
-    "name": "Moletom Comum²",
-    "category": "Hoodies",
-    "price": 289,
+    "name": "Camiseta Riviera Preta",
+    "category": "Estampadas",
+    "price": 189,
     "tag": null,
-    "mark": "02"
+    "images": ["assets/villa-black-back.jpg", "assets/logo-black-front.jpg"],
+    "description": "Versão preta da estampa Riviera: casarão entre coqueiros nas costas, logo Erolles Club discreto no peito. Corte reto, 100% algodão."
   },
   {
     "id": "p03",
-    "name": "Camiseta Freedom",
-    "category": "Tees",
-    "price": 149,
-    "tag": "Últimas peças",
-    "mark": "03"
+    "name": "Camiseta Hollywood Drive Preta",
+    "category": "Estampadas",
+    "price": 199,
+    "tag": "Novo",
+    "images": ["assets/hollywood-black-front.jpg"],
+    "description": "Estampa frontal com carro clássico e letreiro Hollywood entre coqueiros. Base preta, malha pesada, caimento oversized."
   },
   {
     "id": "p04",
-    "name": "Calça Wide Escape",
-    "category": "Bottoms",
-    "price": 349,
+    "name": "Camiseta Hollywood Drive Branca",
+    "category": "Estampadas",
+    "price": 199,
     "tag": null,
-    "mark": "04"
+    "images": ["assets/hollywood-white-back.jpg"],
+    "description": "A mesma arte Hollywood Drive, aplicada nas costas de uma base branca. Ideal pra quem quer o mesmo design em outra vibe."
   },
   {
     "id": "p05",
-    "name": "Boné Club",
-    "category": "Acessórios",
-    "price": 119,
+    "name": "Camiseta Malibu Vibe Branca",
+    "category": "Estampadas",
+    "price": 179,
     "tag": null,
-    "mark": "05"
+    "images": ["assets/malibu-white-back.jpg"],
+    "description": "Estampa \"Malibu Vibe California\" nas costas, com coqueiros e tipografia bold. Base branca, 100% algodão."
   },
   {
     "id": "p06",
-    "name": "Bomber Ordinary",
-    "category": "Outerwear",
-    "price": 459,
-    "tag": "Novo",
-    "mark": "06"
+    "name": "Camiseta Malibu Vibe Preta",
+    "category": "Estampadas",
+    "price": 179,
+    "tag": "Últimas peças",
+    "images": ["assets/malibu-black-back.jpg"],
+    "description": "Versão preta da estampa Malibu Vibe California — coqueiros, tipografia bold e o logo Erolles Club nas costas."
   },
   {
     "id": "p07",
-    "name": "Camiseta Ordinary Fade",
-    "category": "Tees",
-    "price": 159,
+    "name": "Camiseta Logo Básica Branca",
+    "category": "Básicas",
+    "price": 149,
     "tag": null,
-    "mark": "07"
+    "images": ["assets/logo-white-front.jpg"],
+    "description": "Camiseta branca minimalista, só com o logo Erolles Club assinado no peito. Para o dia a dia."
   },
   {
     "id": "p08",
-    "name": "Moletom Zip Runaway",
-    "category": "Hoodies",
-    "price": 319,
+    "name": "Camiseta Logo Básica Preta",
+    "category": "Básicas",
+    "price": 149,
     "tag": null,
-    "mark": "08"
+    "images": ["assets/logo-black-front.jpg"],
+    "description": "Camiseta preta minimalista, só com o logo Erolles Club assinado no peito. Para o dia a dia."
   }
 ]
