@@ -462,6 +462,22 @@ function switchAuthTab(tab) {
   document.querySelector(`.auth-tab[data-tab="${tab}"]`)?.classList.add("active");
 }
 
+/* ---------- Modo escuro ---------- */
+function initThemeToggle() {
+  const btn = document.getElementById("theme-toggle");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    if (isDark) {
+      document.documentElement.removeAttribute("data-theme");
+      localStorage.setItem("erolles_theme", "light");
+    } else {
+      document.documentElement.setAttribute("data-theme", "dark");
+      localStorage.setItem("erolles_theme", "dark");
+    }
+  });
+}
+
 /* ---------- Init ---------- */
 document.addEventListener("DOMContentLoaded", async () => {
   await loadProducts();
@@ -472,6 +488,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   renderCartDrawer();
   renderCartPage();
   renderUserChip();
+  initThemeToggle();
 
   document.getElementById("cart-btn")?.addEventListener("click", openCart);
   document.getElementById("cart-close")?.addEventListener("click", closeCart);
