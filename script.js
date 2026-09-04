@@ -478,8 +478,57 @@ function initThemeToggle() {
   });
 }
 
+/* ---------- Gate de senha ---------- */
+const SITE_PASSWORD = "erolles2026";
+
+function initPasswordGate() {
+  const submit = document.getElementById("gate-submit");
+  if (!submit) return;
+
+  const input = document.getElementById("gate-password");
+  const msg = document.getElementById("gate-msg");
+  const toggle = document.getElementById("gate-toggle-visibility");
+
+  toggle?.addEventListener("click", () => {
+    input.type = input.type === "password" ? "text" : "password";
+  });
+
+  const tryUnlock = () => {
+    if (input.value === SITE_PASSWORD) {
+      localStorage.setItem("erolles_unlocked", "true");
+      const redirect = qs("redirect") || "index.html";
+      window.location.href = redirect;
+    } else {
+      msg.textContent = "Senha incorreta. Tente novamente.";
+      msg.style.color = "#5796ec";
+    }
+  };
+
+  submit.addEventListener("click", tryUnlock);
+  input?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") tryUnlock();
+  });
+
+  document.getElementById("gate-news-form")?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    msg.style.color = "";
+    msg.textContent = "Obrigado por assinar!";
+  });
+}
+
+function enforcePasswordGate() {
+  // Não protege a própria página de senha
+  if (window.location.pathname.endsWith("senha.html")) return;
+  const unlocked = localStorage.getItem("erolles_unlocked") === "true";
+  if (!unlocked) {
+    const current = window.location.pathname.split("/").pop() || "index.html";
+    window.location.href = `senha.html?redirect=${encodeURIComponent(current)}`;
+  }
+}
+
 /* ---------- Init ---------- */
 document.addEventListener("DOMContentLoaded", async () => {
+  initPasswordGate();
   await loadProducts();
 
   renderFilters();

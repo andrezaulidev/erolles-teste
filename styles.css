@@ -60,6 +60,13 @@ header{
   transform:rotate(-1.5deg);
   display:inline-block;
 }
+.logo-img{
+  display:flex;align-items:center;
+  background:#fff;padding:6px 14px;border-radius:4px;
+}
+.logo-img img{height:26px;width:auto;object-fit:contain;display:block;}
+.mobile-nav .logo-img{padding:8px 16px;}
+.mobile-nav .logo-img img{height:30px;}
 .logo span{display:block;font-size:12px;letter-spacing:2px;}
 .tagline{font-size:14px;color:var(--navy);opacity:0.75;}
 .header-right{display:flex;align-items:center;gap:22px;}
@@ -472,4 +479,71 @@ footer{padding:64px 0 0;}
 .view-cart-link{
   display:block;text-align:center;font-size:13px;padding:14px;
   border-top:1px solid var(--line);text-decoration:underline;opacity:0.75;
+}
+
+/* ---------- GATE DE SENHA ---------- */
+.gate-wrap{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;
+  color:var(--cream);
+}
+.gate-top{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:60px 24px;
+}
+.gate-logo{
+  height:52px;width:auto;background:#fff;padding:10px 18px;border-radius:6px;margin-bottom:44px;
+}
+.gate-top h1{
+  font-family:'Archivo Black', sans-serif;
+  font-size:clamp(22px,3.2vw,32px);
+  letter-spacing:-0.5px;
+  max-width:640px;margin-bottom:44px;
+  line-height:1.25;
+}
+.gate-field{width:100%;max-width:520px;margin-bottom:30px;text-align:left;}
+.gate-field label{
+  display:block;text-align:center;font-size:12px;letter-spacing:1.5px;
+  margin-bottom:14px;opacity:0.75;text-transform:uppercase;
+}
+.gate-input-row{
+  display:flex;align-items:center;border:1px solid rgba(245,241,232,0.3);
+  padding:0 16px;
+}
+.gate-input-row input{
+  flex:1;background:none;border:none;color:var(--cream);
+  padding:15px 0;font-family:inherit;font-size:14px;
+}
+.gate-input-row input:focus{outline:none;}
+.gate-input-row button{
+  background:none;border:none;color:var(--cream);opacity:0.6;cursor:pointer;font-size:15px;
+}
+.gate-btn{
+  background:var(--clay);border-color:var(--clay);color:#0b1f33;font-weight:700;
+}
+.gate-btn:hover{opacity:0.9;background:var(--clay);}
+.gate-msg{margin-top:16px;font-size:13px;min-height:18px;opacity:0.85;}
+
+.gate-footer{
+  border-top:1px solid rgba(245,241,232,0.15);
+  padding:50px 24px;text-align:center;
+}
+.gate-footer h4{
+  font-size:12px;letter-spacing:1.5px;margin-bottom:18px;text-transform:uppercase;opacity:0.85;
+}
+.gate-newsletter{
+  display:flex;max-width:340px;margin:0 auto 30px;
+  border:1px solid rgba(245,241,232,0.3);
+}
+.gate-newsletter input{
+  flex:1;background:none;border:none;color:var(--cream);padding:13px 16px;
+  font-family:inherit;font-size:13px;
+}
+.gate-newsletter input:focus{outline:none;}
+.gate-newsletter button{
+  background:none;border:none;color:var(--cream);font-size:15px;cursor:pointer;padding:0 16px;
+}
+.gate-social{display:flex;justify-content:center;}
+.gate-social a{
+  width:34px;height:34px;border-radius:50%;border:1px solid rgba(245,241,232,0.3);
+  display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--cream);
 }

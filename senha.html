@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Senha de acesso — Erolles Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>(function(){var t=localStorage.getItem("erolles_theme");if(t==="dark"){document.documentElement.setAttribute("data-theme","dark");}})();</script>
+</head>
+<body style="background:var(--navy-2);">
+
+<div class="gate-wrap">
+  <div class="gate-top">
+    <img src="assets/brand-wordmark.jpg" alt="Erolles Club" class="gate-logo">
+    <h1>Senha de acesso ao site: Erolles Club</h1>
+
+    <div class="gate-field">
+      <label for="gate-password">Senha de acesso</label>
+      <div class="gate-input-row">
+        <input type="password" id="gate-password" placeholder="••••••••" autocomplete="off">
+        <button type="button" id="gate-toggle-visibility" aria-label="Mostrar senha">👁</button>
+      </div>
+    </div>
+
+    <button class="btn gate-btn" id="gate-submit">Destravar</button>
+    <div class="gate-msg" id="gate-msg"></div>
+  </div>
+
+  <div class="gate-footer">
+    <h4>Assine nossa newsletter</h4>
+    <form class="gate-newsletter" id="gate-news-form">
+      <input type="email" placeholder="E-mail" required>
+      <button type="submit" aria-label="Inscrever">→</button>
+    </form>
+    <div class="gate-social">
+      <a href="#" aria-label="Instagram">ig</a>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

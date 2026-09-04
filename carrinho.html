@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script>(function(){var t=localStorage.getItem("erolles_theme");if(t==="dark"){document.documentElement.setAttribute("data-theme","dark");}})();</script>
+<script>(function(){if(localStorage.getItem("erolles_unlocked")!=="true"){var cur=window.location.pathname.split("/").pop()||"index.html";window.location.replace("senha.html?redirect="+encodeURIComponent(cur));}})();</script>
 </head>
 <body>
 
@@ -16,7 +17,7 @@
 
 <header>
   <div class="header-inner">
-    <a href="index.html" class="logo">EROLLES<span>CLUB</span></a>
+    <a href="index.html" class="logo-img"><img src="assets/brand-wordmark.jpg" alt="Erolles Club"></a>
     <div class="tagline">Nascido para escapar do comum.</div>
     <div class="header-right">
       <span class="user-chip"></span>
@@ -32,7 +33,7 @@
 
 <nav class="mobile-nav" id="mobile-nav">
   <div class="mobile-nav-top">
-    <a href="index.html" class="logo" style="color:inherit;">EROLLES<span>CLUB</span></a>
+    <a href="index.html" class="logo-img"><img src="assets/brand-wordmark.jpg" alt="Erolles Club"></a>
     <button class="mobile-nav-close" id="menu-close" aria-label="Fechar menu">✕</button>
   </div>
   <ul>
