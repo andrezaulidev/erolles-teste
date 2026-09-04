@@ -424,6 +424,11 @@ function handleRegister(e) {
     msg.style.color = "#c4552e";
     return;
   }
+  if (/[<>]/.test(name) || name.length > 60) {
+    msg.textContent = "Nome inválido: não use os caracteres < ou >.";
+    msg.style.color = "#c4552e";
+    return;
+  }
 
   const users = getUsers();
   if (users.some((u) => u.email === email)) {
@@ -445,8 +450,16 @@ function renderUserChip() {
   document.querySelectorAll(".user-chip").forEach((chip) => {
     if (state.user) {
       chip.classList.add("show");
-      chip.innerHTML = `<span>Olá, ${state.user.name.split(" ")[0]}</span> <button id="logout-btn" style="background:none;border:none;text-decoration:underline;cursor:pointer;font-size:12px;color:inherit;">Sair</button>`;
-      chip.querySelector("#logout-btn")?.addEventListener("click", () => {
+      chip.textContent = "";
+      const nameSpan = document.createElement("span");
+      nameSpan.textContent = `Olá, ${state.user.name.split(" ")[0]}`;
+      const logoutBtn = document.createElement("button");
+      logoutBtn.id = "logout-btn";
+      logoutBtn.textContent = "Sair";
+      logoutBtn.style.cssText = "background:none;border:none;text-decoration:underline;cursor:pointer;font-size:12px;color:inherit;margin-left:6px;";
+      chip.appendChild(nameSpan);
+      chip.appendChild(logoutBtn);
+      logoutBtn.addEventListener("click", () => {
         state.user = null;
         localStorage.removeItem("erolles_user");
         window.location.reload();
@@ -480,6 +493,14 @@ function initThemeToggle() {
 
 /* ---------- Gate de senha ---------- */
 const SITE_PASSWORD = "erolles2026";
+const ALLOWED_PAGES = ["index.html", "produto.html", "carrinho.html", "login.html"];
+
+function safeRedirectTarget() {
+  const raw = qs("redirect") || "index.html";
+  // Só aceita nomes de página simples da whitelist — nunca URLs externas,
+  // protocolos javascript:/data: ou caminhos com barras.
+  return ALLOWED_PAGES.includes(raw) ? raw : "index.html";
+}
 
 function initPasswordGate() {
   const submit = document.getElementById("gate-submit");
@@ -496,8 +517,7 @@ function initPasswordGate() {
   const tryUnlock = () => {
     if (input.value === SITE_PASSWORD) {
       try { localStorage.setItem("erolles_unlocked", "true"); } catch (e) {}
-      const redirect = qs("redirect") || "index.html";
-      window.location.href = redirect;
+      window.location.href = safeRedirectTarget();
     } else {
       msg.textContent = "Senha incorreta. Tente novamente.";
       msg.style.color = "#5796ec";
