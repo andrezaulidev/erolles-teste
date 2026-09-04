@@ -495,7 +495,7 @@ function initPasswordGate() {
 
   const tryUnlock = () => {
     if (input.value === SITE_PASSWORD) {
-      localStorage.setItem("erolles_unlocked", "true");
+      try { localStorage.setItem("erolles_unlocked", "true"); } catch (e) {}
       const redirect = qs("redirect") || "index.html";
       window.location.href = redirect;
     } else {

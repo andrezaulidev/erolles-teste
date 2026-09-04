@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script>(function(){var t=localStorage.getItem("erolles_theme");if(t==="dark"){document.documentElement.setAttribute("data-theme","dark");}})();</script>
-<script>(function(){if(localStorage.getItem("erolles_unlocked")!=="true"){var cur=window.location.pathname.split("/").pop()||"index.html";window.location.replace("senha.html?redirect="+encodeURIComponent(cur));}})();</script>
+<script>(function(){var ok=false;try{ok=localStorage.getItem("erolles_unlocked")==="true";}catch(e){ok=false;}if(!ok){var cur=window.location.pathname.split("/").pop()||"index.html";window.location.replace("senha.html?redirect="+encodeURIComponent(cur));}})();</script>
 </head>
 <body>
 
