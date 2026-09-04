@@ -8,7 +8,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<script>(function(){var t=localStorage.getItem("erolles_theme");if(t==="dark"){document.documentElement.setAttribute("data-theme","dark");}})();</script>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<meta name="description" content="Erolles Club — roupas próprias, produção limitada, feitas para quem escapa do comum.">
+<meta property="og:title" content="Erolles Club">
+<meta property="og:description" content="Roupas próprias, produção limitada, feitas para quem escapa do comum.">
+<meta property="og:image" content="assets/villa-black-back.jpg">
+<meta property="og:type" content="website">
+<script>(function(){try{if(localStorage.getItem("erolles_theme")==="dark"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
 <script>(function(){var ok=false;try{ok=localStorage.getItem("erolles_unlocked")==="true";}catch(e){ok=false;}if(!ok){var cur=window.location.pathname.split("/").pop()||"index.html";window.location.replace("senha.html?redirect="+encodeURIComponent(cur));}})();</script>
 </head>
 <body>
@@ -54,7 +60,8 @@
       <div class="row"><span>Subtotal</span><span id="summary-subtotal">R$ 0,00</span></div>
       <div class="row"><span>Frete</span><span>Grátis</span></div>
       <div class="row total"><span>Total</span><span id="summary-total">R$ 0,00</span></div>
-      <button class="btn" style="width:100%;justify-content:center;margin-top:10px;">Finalizar compra</button>
+      <button class="btn" id="checkout-btn" style="width:100%;justify-content:center;margin-top:10px;">Finalizar compra</button>
+      <div class="auth-msg" id="checkout-msg" style="margin-top:12px;"></div>
     </div>
   </div>
 </div>

@@ -57,4 +57,11 @@ O login é **100% simulado no navegador**: contas e senhas ficam salvas em `loca
 
 ## Checkout
 
-O botão "Finalizar compra" ainda não está conectado a um gateway de pagamento real (Stripe, Mercado Pago, PagSeguro etc.). Precisa integrar um desses para processar pagamentos de verdade.
+O botão "Finalizar compra" hoje é **simulado**: limpa o carrinho e mostra uma mensagem de sucesso, mas não está conectado a nenhum gateway de pagamento real (Stripe, Mercado Pago, PagSeguro etc.). Precisa integrar um desses para processar pagamentos de verdade.
+
+## Segurança — pontos já revisados
+
+- Todo acesso ao `localStorage` passa por um helper (`safeStorage`) com try/catch, então o site não quebra em navegadores/preview que bloqueiam essa API (ex: alguns webviews sandboxed).
+- O nome digitado no cadastro é renderizado com `textContent`/`createElement`, nunca `innerHTML`, evitando XSS armazenado.
+- O parâmetro `?redirect=` da tela de senha só aceita uma whitelist fixa de páginas do próprio site, evitando open redirect e injeção via `javascript:`/`data:`.
+- A senha de acesso ao site e as senhas de usuário continuam em texto puro no código/`localStorage` — é uma limitação inerente a qualquer proteção feita só no front-end. Para segurança real, ambas precisam ser validadas por um backend.

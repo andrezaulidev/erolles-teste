@@ -3,19 +3,54 @@
    Compartilhado entre todas as páginas
    ================================ */
 
+/* ---------- Storage seguro (não quebra em navegador com localStorage bloqueado) ---------- */
+const safeStorage = {
+  get(key, fallback) {
+    try {
+      const raw = localStorage.getItem(key);
+      return raw === null ? fallback : raw;
+    } catch (e) {
+      return fallback;
+    }
+  },
+  getJSON(key, fallback) {
+    try {
+      const raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : fallback;
+    } catch (e) {
+      return fallback;
+    }
+  },
+  set(key, value) {
+    try {
+      localStorage.setItem(key, value);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  },
+  setJSON(key, value) {
+    return safeStorage.set(key, JSON.stringify(value));
+  },
+  remove(key) {
+    try {
+      localStorage.removeItem(key);
+    } catch (e) {}
+  }
+};
+
 const state = {
   products: [],
   activeFilter: "Todos",
-  cart: JSON.parse(localStorage.getItem("erolles_cart") || "[]"),
-  user: JSON.parse(localStorage.getItem("erolles_user") || "null")
+  cart: safeStorage.getJSON("erolles_cart", []),
+  user: safeStorage.getJSON("erolles_user", null)
 };
 
 /* ---------- Utilidades ---------- */
 const formatBRL = (value) =>
   value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
-const saveCart = () =>
-  localStorage.setItem("erolles_cart", JSON.stringify(state.cart));
+const saveCart = () => safeStorage.setJSON("erolles_cart", state.cart);
 
 const qs = (name) => new URLSearchParams(window.location.search).get(name);
 
@@ -384,10 +419,10 @@ function handleNewsletterSubmit(e) {
 
 /* ---------- Login / Cadastro (simulado, localStorage) ---------- */
 function getUsers() {
-  return JSON.parse(localStorage.getItem("erolles_users") || "[]");
+  return safeStorage.getJSON("erolles_users", []);
 }
 function saveUsers(users) {
-  localStorage.setItem("erolles_users", JSON.stringify(users));
+  safeStorage.setJSON("erolles_users", users);
 }
 
 function handleLogin(e) {
@@ -406,7 +441,7 @@ function handleLogin(e) {
   }
 
   state.user = { name: found.name, email: found.email };
-  localStorage.setItem("erolles_user", JSON.stringify(state.user));
+  safeStorage.setJSON("erolles_user", state.user);
   msg.style.color = "";
   msg.textContent = `Bem-vindo(a) de volta, ${found.name}!`;
   setTimeout(() => (window.location.href = "index.html"), 800);
@@ -440,7 +475,7 @@ function handleRegister(e) {
   users.push({ name, email, password });
   saveUsers(users);
   state.user = { name, email };
-  localStorage.setItem("erolles_user", JSON.stringify(state.user));
+  safeStorage.setJSON("erolles_user", state.user);
   msg.style.color = "";
   msg.textContent = `Conta criada! Bem-vindo(a), ${name}.`;
   setTimeout(() => (window.location.href = "index.html"), 800);
@@ -461,7 +496,7 @@ function renderUserChip() {
       chip.appendChild(logoutBtn);
       logoutBtn.addEventListener("click", () => {
         state.user = null;
-        localStorage.removeItem("erolles_user");
+        safeStorage.remove("erolles_user");
         window.location.reload();
       });
     }
@@ -483,10 +518,10 @@ function initThemeToggle() {
     const isDark = document.documentElement.getAttribute("data-theme") === "dark";
     if (isDark) {
       document.documentElement.removeAttribute("data-theme");
-      localStorage.setItem("erolles_theme", "light");
+      safeStorage.set("erolles_theme", "light");
     } else {
       document.documentElement.setAttribute("data-theme", "dark");
-      localStorage.setItem("erolles_theme", "dark");
+      safeStorage.set("erolles_theme", "dark");
     }
   });
 }
@@ -516,7 +551,7 @@ function initPasswordGate() {
 
   const tryUnlock = () => {
     if (input.value === SITE_PASSWORD) {
-      try { localStorage.setItem("erolles_unlocked", "true"); } catch (e) {}
+      safeStorage.set("erolles_unlocked", "true");
       window.location.href = safeRedirectTarget();
     } else {
       msg.textContent = "Senha incorreta. Tente novamente.";
@@ -539,11 +574,31 @@ function initPasswordGate() {
 function enforcePasswordGate() {
   // Não protege a própria página de senha
   if (window.location.pathname.endsWith("senha.html")) return;
-  const unlocked = localStorage.getItem("erolles_unlocked") === "true";
+  const unlocked = safeStorage.get("erolles_unlocked", "") === "true";
   if (!unlocked) {
     const current = window.location.pathname.split("/").pop() || "index.html";
     window.location.href = `senha.html?redirect=${encodeURIComponent(current)}`;
   }
+}
+
+/* ---------- Checkout (simulado — sem gateway de pagamento real) ---------- */
+function initCheckout() {
+  const btn = document.getElementById("checkout-btn");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    const msg = document.getElementById("checkout-msg");
+    if (!state.cart.length) {
+      msg.style.color = "#5796ec";
+      msg.textContent = "Seu carrinho está vazio.";
+      return;
+    }
+    state.cart = [];
+    saveCart();
+    renderCartDrawer();
+    renderCartPage();
+    msg.style.color = "";
+    msg.textContent = "Pedido simulado com sucesso! Em breve conectaremos um meio de pagamento real (Stripe, Mercado Pago etc).";
+  });
 }
 
 /* ---------- Init ---------- */
@@ -558,6 +613,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   renderCartPage();
   renderUserChip();
   initThemeToggle();
+  initCheckout();
 
   document.getElementById("cart-btn")?.addEventListener("click", openCart);
   document.getElementById("cart-close")?.addEventListener("click", closeCart);
