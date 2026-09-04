@@ -62,11 +62,10 @@ header{
 }
 .logo-img{
   display:flex;align-items:center;
-  background:#fff;padding:6px 14px;border-radius:4px;
 }
-.logo-img img{height:26px;width:auto;object-fit:contain;display:block;}
-.mobile-nav .logo-img{padding:8px 16px;}
+.logo-img img{height:26px;width:auto;object-fit:contain;display:block;filter:var(--logo-filter, none);}
 .mobile-nav .logo-img img{height:30px;}
+[data-theme="dark"] .logo-img img{filter:invert(1) brightness(1.15);}
 .logo span{display:block;font-size:12px;letter-spacing:2px;}
 .tagline{font-size:14px;color:var(--navy);opacity:0.75;}
 .header-right{display:flex;align-items:center;gap:22px;}
