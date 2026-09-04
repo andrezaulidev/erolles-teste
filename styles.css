@@ -63,10 +63,18 @@ header{
 .logo-img{
   display:flex;align-items:center;
 }
-.logo-img img{height:26px;width:auto;object-fit:contain;display:block;filter:var(--logo-filter, none);}
-.mobile-nav .logo-img img{height:30px;}
+.logo-img img{height:26px;width:auto;object-fit:contain;display:block;}
 [data-theme="dark"] .logo-img img{filter:invert(1) brightness(1.15);}
-.mobile-nav .logo-img img{filter:invert(1) brightness(1.15);}
+.mobile-nav .logo-img img{display:none;}
+.mobile-nav .logo-mask{
+  display:inline-block;width:150px;height:34px;
+  background-color:var(--cream);
+  -webkit-mask-image:url('assets/logo-header.png');
+  mask-image:url('assets/logo-header.png');
+  -webkit-mask-size:contain;mask-size:contain;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-position:left center;mask-position:left center;
+}
 .logo span{display:block;font-size:12px;letter-spacing:2px;}
 .tagline{font-size:14px;color:var(--navy);opacity:0.75;}
 .header-right{display:flex;align-items:center;gap:22px;}
