@@ -78,6 +78,22 @@ module.exports = async (req, res) => {
     return res.status(200).json({ url: session.url });
   } catch (err) {
     console.error("Erro ao criar sessão Stripe:", err);
+
+    // Erros comuns de configuração — detectados pra dar uma mensagem clara
+    // em vez de "tente novamente" genérico.
+    if (err.type === "StripeAuthenticationError" || err.raw?.type === "invalid_request_error") {
+      const usedPublishable = String(process.env.STRIPE_SECRET_KEY || "").startsWith("pk_");
+      return res.status(500).json({
+        error: usedPublishable
+          ? "A variável STRIPE_SECRET_KEY está com a chave PÚBLICA (pk_...). Use a chave SECRETA (sk_...) do painel do Stripe."
+          : "Chave do Stripe inválida ou não configurada corretamente na Vercel."
+      });
+    }
+
+    if (err.message?.startsWith("Produto inválido")) {
+      return res.status(400).json({ error: err.message });
+    }
+
     return res.status(500).json({ error: "Não foi possível iniciar o pagamento. Tente novamente." });
   }
 };
