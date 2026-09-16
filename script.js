@@ -609,18 +609,28 @@ function initCheckout() {
         })
       });
 
-      const data = await res.json();
+      let data;
+      try {
+        data = await res.json();
+      } catch (parseErr) {
+        throw new Error(`Resposta inesperada do servidor (status ${res.status}). A função /api pode não ter sido publicada.`);
+      }
 
       if (!res.ok || !data.url) {
-        throw new Error(data.error || "Não foi possível iniciar o pagamento.");
+        throw new Error(data.error || `Erro do servidor (status ${res.status}).`);
       }
 
       window.location.href = data.url; // redireciona pro Checkout do Stripe
     } catch (err) {
       console.error(err);
       msg.style.color = "#5796ec";
-      msg.textContent =
-        "Não foi possível conectar ao pagamento. Se você está testando localmente (sem Vercel), o checkout real só funciona depois do deploy.";
+      if (err instanceof TypeError) {
+        // fetch nem conseguiu completar a requisição (sem rede, ou rota /api inexistente)
+        msg.textContent =
+          "Não foi possível conectar ao servidor de pagamento. Se você está testando localmente (sem Vercel), o checkout real só funciona depois do deploy.";
+      } else {
+        msg.textContent = `Erro no pagamento: ${err.message}`;
+      }
       btn.disabled = false;
       btn.textContent = originalText;
     }
