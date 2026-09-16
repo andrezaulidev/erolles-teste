@@ -581,23 +581,49 @@ function enforcePasswordGate() {
   }
 }
 
-/* ---------- Checkout (simulado — sem gateway de pagamento real) ---------- */
+/* ---------- Checkout real via Stripe ---------- */
 function initCheckout() {
   const btn = document.getElementById("checkout-btn");
   if (!btn) return;
-  btn.addEventListener("click", () => {
-    const msg = document.getElementById("checkout-msg");
+  const msg = document.getElementById("checkout-msg");
+
+  btn.addEventListener("click", async () => {
     if (!state.cart.length) {
       msg.style.color = "#5796ec";
       msg.textContent = "Seu carrinho está vazio.";
       return;
     }
-    state.cart = [];
-    saveCart();
-    renderCartDrawer();
-    renderCartPage();
+
+    btn.disabled = true;
+    const originalText = btn.textContent;
+    btn.textContent = "Redirecionando pro pagamento…";
     msg.style.color = "";
-    msg.textContent = "Pedido simulado com sucesso! Em breve conectaremos um meio de pagamento real (Stripe, Mercado Pago etc).";
+    msg.textContent = "";
+
+    try {
+      const res = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: state.cart.map((item) => ({ id: item.id, qty: item.qty, size: item.size }))
+        })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.url) {
+        throw new Error(data.error || "Não foi possível iniciar o pagamento.");
+      }
+
+      window.location.href = data.url; // redireciona pro Checkout do Stripe
+    } catch (err) {
+      console.error(err);
+      msg.style.color = "#5796ec";
+      msg.textContent =
+        "Não foi possível conectar ao pagamento. Se você está testando localmente (sem Vercel), o checkout real só funciona depois do deploy.";
+      btn.disabled = false;
+      btn.textContent = originalText;
+    }
   });
 }
 

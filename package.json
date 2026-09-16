@@ -1,0 +1,9 @@
+{
+  "name": "erolles-club",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site da Erolles Club com checkout real via Stripe (Vercel Functions).",
+  "dependencies": {
+    "stripe": "^17.7.0"
+  }
+}

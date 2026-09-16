@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedido confirmado — Erolles Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<script>(function(){try{if(localStorage.getItem("erolles_theme")==="dark"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-img"><img src="assets/logo-header.png" alt="Erolles Club"></a>
+    <div class="tagline">Nascido para escapar do comum.</div>
+    <div class="header-right"></div>
+  </div>
+</header>
+
+<div class="auth-wrap">
+  <div class="auth-box" style="text-align:center;max-width:480px;">
+    <div style="font-size:44px;margin-bottom:18px;">✓</div>
+    <h1>Pedido confirmado!</h1>
+    <p class="auth-sub">Seu pagamento foi processado com sucesso. Em breve você recebe um e-mail com os detalhes do envio.</p>
+    <a href="index.html" class="btn auth-submit" style="display:flex;">Voltar pra loja</a>
+  </div>
+</div>
+
+<script>
+  // Limpa o carrinho local depois de um pagamento confirmado
+  try { localStorage.removeItem("erolles_cart"); } catch (e) {}
+</script>
+</body>
+</html>
